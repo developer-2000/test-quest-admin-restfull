@@ -1,0 +1,214 @@
+
+dl, ol, ul {
+    margin: 0px;
+}
+a:hover{
+    text-decoration: underline;
+}
+#sidebar .brand-link{
+    padding: 13px 1px;
+    color: black;
+    text-align: center;
+}
+
+#app .block_content{
+    padding-top: 60px;
+    margin-left: 264px;
+    margin-right: 7px;
+    transition: margin-left .1s ease-in-out;
+}
+
+nav.mt-2{
+    margin-top: 68px !important;
+}
+
+.main-footer{
+    position: absolute;
+    width: 100% !important;
+    bottom: 0px;
+    z-index: 1;
+    margin-left: 0px !important;
+    padding-left: 265px !important;
+}
+
+.block_table_pagin{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.btn.disabled, .btn:disabled {
+    cursor: default;
+    background: white;
+    border: 1px solid #a1a1a1;
+}
+.block_grope_but{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 265px;
+}
+.service_but_admin{
+    width: auto;
+    padding: 5px 12px;
+    font-size: 13px;
+    margin: 0px 5px!important;
+    color: white;
+}
+
+.card-body::after, .card-footer::after, .card-header::after {
+    content: normal;
+}
+.btn-block + .btn-block {
+     margin-top: 0px!important;
+}
+.disabled{
+    color: black!important;
+}
+.v-snack{
+    z-index: 10000!important;
+}
+
+.block_chek .v-input__slot{
+    margin: 0px!important;
+}
+.card-header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: stretch;
+    align-items: center;
+}
+.card-header button{
+    width: 100px;
+}
+.card-title{
+    margin-bottom: 0px;
+}
+.action_tr,
+.date_tr{
+    width: 160px;
+}
+thead{
+    text-align: center;
+}
+.modal-footer.justify-content-between{
+    justify-content: flex-end!important;
+}
+
+.modal-body{
+    padding: 0px;
+}
+.block_grope_but {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: stretch;
+    align-items: center;
+}
+.block_grope_but2 {
+    display: flex;
+    flex-direction: column;
+    min-height: 268px;
+    width: 100%;
+}
+
+.block_grope_but button:nth-child(1) {
+    background: #e0a800;
+}
+.block_grope_but button:nth-child(2) {
+    background: #c82333;
+}
+.block_grope_but button:nth-child(3) {
+    background: #218838;
+}
+.btn_yellow {
+    background: #e0a800!important;
+}
+.btn_red {
+    background: #c82333!important;
+}
+.btn_green {
+    background: #38c172!important;
+}
+.btn_yellow:hover,
+.btn_green:hover,
+.btn_red:hover{
+    color: white;
+}
+
+
+
+
+div.modal-backdrop {
+    z-index: 1;
+}
+#table_reclamation .v-expansion-panel__header__icon{
+    display: none!important;
+}
+#table_reclamation .v-expansion-panel__header{
+    color: #2d7fff;
+    font-weight: 600;
+    text-align: center;
+    display: block;
+}
+#table_reclamation .v-expansion-panel__header:hover{
+    text-decoration: underline;
+}
+#table_reclamation .v-expansion-panel__body{
+    border-top: 1px dashed #bfbfbf;
+}
+#table_reclamation .v-card.v-sheet.theme--light{
+    background: #f7f7f7;
+}
+.content{
+    background: #eee;
+    margin: 0px 0px 0px -9px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

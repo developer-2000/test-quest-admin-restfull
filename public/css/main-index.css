@@ -1,0 +1,75 @@
+body {
+    background-color: white;
+}
+.top_navi .theme--light.v-btn {
+    color: white!important;
+}
+.v-icon.material-icons.theme--light {
+    margin: 0px!important;
+}
+.index_block > div:first-child {
+    z-index: 2!important;
+}
+
+#selectTech .v-text-field{
+    margin: 0px;
+    padding: 0px;
+}
+.over_hidden_all{
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+
+.search_worker .skills i{
+
+    /*font-size: 18px;*/
+    /* убрать */
+    font-size: 12px!important;
+}
+.skills .title_experience > div:first-child{
+    /* убрать */
+    min-width: 130px;
+}
+
+
+
+/* === MEDIA === */
+
+/* 1 */
+@media screen and (min-width:360px) {
+}
+@media screen and (min-width:420px) {
+}
+/* 2 */
+@media screen and (min-width:480px) {
+}
+/* 3 */
+@media screen and (min-width:600px) {
+}
+/* 4 */
+@media screen and (min-width:768px) {
+}
+/* 5 */
+@media screen and (min-width:1024px) {
+    .search_worker .skills i{
+        font-size: 14px!important;
+    }
+    .skills .title_experience > div:first-child{
+        min-width: 150px;
+    }
+}
+/* 6 */
+@media screen and (min-width:1280px) {
+    .search_worker .skills i{
+        font-size: 18px!important;
+    }
+    .skills .title_experience > div:first-child{
+        min-width: 160px;
+    }
+}
+/* 7 */
+@media screen and (min-width:1450px) {
+}
+@media screen and (min-width:1620px) {
+}

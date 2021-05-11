@@ -1,0 +1,24 @@
+# IntelliJ IDEA files
+.idea
+/.idea
+
+/node_modules
+/public/hot
+/public/import
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+docker-compose.override.yml
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+help.txt
+package-lock.json
+composer.lock
+storage/debugbar/
+
+

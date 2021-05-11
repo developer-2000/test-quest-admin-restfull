@@ -1,0 +1,494 @@
+{
+	"info": {
+		"_postman_id": "8436625c-f165-461a-ae55-0988b08226db",
+		"name": "test-quest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var api_url = pm.variables.get('API_URL');\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.globals.set(api_url + 'API_TOKEN', jsonData.data.api_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@admin.admin",
+									"description": "string",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "adminadmin",
+									"description": "string",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{API_URL}}api/auth/signin",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var api_url = pm.variables.get('API_URL');\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.globals.set(api_url + 'API_TOKEN', jsonData.data.api_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@admin.admin",
+									"description": "string|unique",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "adminadmin",
+									"description": "string",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "adminadmin",
+									"description": "string",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{API_URL}}api/auth/signup",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin panel",
+			"item": [
+				{
+					"name": "access",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_bearer_local}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}api/admin/access",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"admin",
+								"access"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "company",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_bearer_local}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "title1",
+									"description": "string|required|unique",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "desc 1",
+									"description": "string|required",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{API_URL}}api/admin/company",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"admin",
+								"company"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "limit load companies",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_bearer_local}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "title1",
+									"description": "string|required|unique",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "desc 1",
+									"description": "string|required",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{API_URL}}api/admin/company/select_for_people",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"admin",
+								"company",
+								"select_for_people"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_bearer_local}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{API_URL}}api/admin/company/2?title=sdf&description=sdf",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"admin",
+								"company",
+								"2"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "sdf",
+									"description": "string|required|unique"
+								},
+								{
+									"key": "description",
+									"value": "sdf",
+									"description": "string|required"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_bearer_local}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{API_URL}}api/admin/company/3",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"admin",
+								"company",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_bearer_local}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{API_URL}}api/admin/company?page=1",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"admin",
+								"company"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "people",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_bearer_local}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "company_id",
+									"value": "3",
+									"description": "integer|required|companies:id",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "people 1",
+									"description": "string|required",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{API_URL}}api/admin/people",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"admin",
+								"people"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_bearer_local}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{API_URL}}api/admin/people/2?name=people 11",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"admin",
+								"people",
+								"2"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "people 11",
+									"description": "string|required"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_bearer_local}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{API_URL}}api/admin/client/1",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"admin",
+								"client",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_bearer_local}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{API_URL}}api/admin/client",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"admin",
+								"client"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
