@@ -4,8 +4,6 @@
     @section('content')
 
         <div id="auth" class="login-box">
-
-            <!-- /.login-logo -->
             <div class="card">
                 <div class="card-body login-card-body">
                     <p class="login-box-msg">Sign in to start your session</p>
@@ -44,9 +42,7 @@
                     <div id="switch_auth">Выполнить регистрацию</div>
 
                 </div>
-                <!-- /.login-card-body -->
             </div>
-
         </div>
 
     @endsection
@@ -55,9 +51,8 @@
     @parent
     <script>
         $(document).ready(function () {
-            let domen = 'http://test-quest.lara/';
-            $("#email_signin").val(localStorage['auth_email']);
-            $("#password_signin").val(localStorage['auth_password']);
+            let loc = window.location;
+            let domen = loc.protocol+"//"+loc.hostname;
 
             // =================
             // переключатель form
@@ -85,7 +80,12 @@
             // =================
             // клик по кнопке авторизации
             $('#but_signin').click(function() {
-                fetch(domen+'api/auth/signin', {
+               makeAuth()
+            });
+
+            async function makeAuth(){
+
+                await fetch(domen+'/api/auth/signin', {
                     headers: {
                         "Content-Type": "application/json",
                         "Accept": "application/json, text-plain, */*",
@@ -98,21 +98,20 @@
                         password: $("#password_signin").val()
                     })
                 })
-                    .then(data => data.json())
-                    .then( response => {
-                        if (response.errors === undefined) {
-                            localStorage.setItem('bearer_token', 'Bearer '+response.api_token);
-                            window.location.href = '/admin';
-                        }
-                        else {
-                            console.log(response.errors);
-                        }
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-            });
-
+                .then(data => data.json())
+                .then( response => {
+                    if (response.api_token !== undefined) {
+                        localStorage.setItem('bearer_token', 'Bearer '+response.api_token);
+                        window.location.href = '/admin';
+                    }
+                    else {
+                        console.log(response.errors);
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            }
 
             // =================
             // клик по кнопке регистрации

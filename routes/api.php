@@ -10,14 +10,17 @@ Route::prefix('auth')->group(function () {
     Route::post('/signup', 'AutherController@signUp');
     // авторизация
     Route::post('/signin', 'AutherController@signIn')->name('signin');
+    Route::post('/logout', 'AutherController@logout');
 });
 
 
 Route::group(['middleware' => ['auth:api']], function () {
 
     Route::prefix('admin')->group(function () {
+
         // проверка доступа по bearer token
         Route::post('/access', 'AdminController@access');
+
         // выборка 20 компаний для создания клиента в админке
         Route::post('/company/select_for_people', 'CompanyController@selectTwenty');
 
@@ -27,5 +30,6 @@ Route::group(['middleware' => ['auth:api']], function () {
         Route::resource('/client', 'PeopleController')->only([
             'store', 'update', 'index', 'destroy'
         ]);
+
     });
 });

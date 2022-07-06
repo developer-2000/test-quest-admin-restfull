@@ -8,14 +8,17 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthServices {
 
-    // ============================================
-    // регистрация
+    /**
+     * регистрация
+     * @param $index
+     * @return mixed
+     */
     public function signup($index){
-        $index['password'] = Hash::make($index['password']);
 
         $user = User::create([
             'email'=>$index['email'],
-            'password'=>$index['password'],
+            'password'=>Hash::make($index['password']),
+            'email_verified_at'=>now(),
         ]);
 
         // Создать Token пересоздать
@@ -24,9 +27,13 @@ class AuthServices {
         return $user;
     }
 
-    // ============================================
-    // авторизация
+    /**
+     * авторизация
+     * @param $index
+     * @return \Illuminate\Contracts\Auth\Authenticatable|string|null
+     */
     public function signin($index){
+
         if (!Auth::attempt($index)) {
             return 'User not found';
         }
@@ -37,12 +44,12 @@ class AuthServices {
         return $user;
     }
 
-
-
-//    PRIVATE
-    // ===================================================
-    // ===================================================
-    // Создать Token для авторизованного
+    // PRIVATE
+    /**
+     * Создать Token для авторизованного
+     * @param $user
+     * @return mixed
+     */
     protected function createToken($user) {
         // если есть Удалить Token юзера
         $this->deleteToken($user);
@@ -51,9 +58,12 @@ class AuthServices {
         return $token;
     }
 
-    // ===================================================
-    // Удалить Token юзера
+    /**
+     * Удалить Token юзера
+     * @param $user
+     */
     protected function deleteToken($user) {
         DB::table('oauth_access_tokens')->where('user_id', $user->id)->delete();
     }
+
 }

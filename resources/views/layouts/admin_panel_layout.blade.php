@@ -23,8 +23,8 @@
     <link rel="stylesheet" href="//cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css">
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/vue-recaptcha@latest/dist/vue-recaptcha.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer></script>
+{{--    <script src="https://unpkg.com/vue-recaptcha@latest/dist/vue-recaptcha.js"></script>--}}
+{{--    <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer></script>--}}
     <script src="{{ asset('js/adminLTE/jquery.min.js') }}"></script>
     <script src="{{ asset('js/adminLTE/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/adminLTE/adminlte.min.js') }}"></script>
@@ -32,10 +32,9 @@
 </head>
 <body class="hold-transition sidebar-mini layout-navbar-fixed">
 
-<!-- Site wrapper -->
 <div id="app" class="wrapper">
 
-    {{-- верхнее меню --}}
+{{--     верхнее меню--}}
     <nav id="navbar" class="main-header navbar navbar-expand navbar-white navbar-light">
 
         <!-- Left navbar links -->
@@ -47,18 +46,17 @@
             </li>
         </ul>
 
-
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
-                    <i class="fas fa-th-large"></i>
+                <a id="logout" class="nav-link" href="javascript:void(0)">
+                    Logout
                 </a>
             </li>
         </ul>
     </nav>
 
-    {{-- боковое меню --}}
+{{--     боковое меню--}}
     <aside id="sidebar" class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="/admin" class="brand-link elevation-4"> ADMIN </a>
@@ -99,8 +97,36 @@
         reserved.
     </footer>
 </div>
-<!-- ./wrapper -->
+
 {{-- JS --}}
+<script>
+    $(document).ready(function () {
+        let loc = window.location;
+        let domen = loc.protocol+"//"+loc.hostname;
+
+        // logout
+        $('#logout').click(function() {
+            fetch(domen+'/api/auth/logout', {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json, text-plain, */*",
+                    "X-Requested-With": "XMLHttpRequest",
+                },
+                method: 'post',
+                credentials: "same-origin",
+                body: JSON.stringify({})
+            })
+                .then(data => data.json())
+                .then( response => {
+                    localStorage.setItem('bearer_token', '');
+                    window.location.href = '/admin/auth';
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        });
+    });
+</script>
 @yield('scripts')
 
 {{-- CSS --}}

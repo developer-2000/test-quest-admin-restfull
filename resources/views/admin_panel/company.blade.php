@@ -7,7 +7,7 @@
                 <!-- Main content -->
                 <section class="content">
 
-                    <!-- создание компании -->
+                    <!-- гармошка - создание компании -->
                     <div class="card collapsed-card">
                         <div class="card-header">
                             <h3 class="card-title">Компании</h3>
@@ -32,7 +32,7 @@
                         </div>
                         <!-- /.card-body data-damage-resistance="40" -->
                     </div>
-                    <!-- /.card -->
+                    <!-- / гармошка -->
 
 
                     <!-- Table Company -->
